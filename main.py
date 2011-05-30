@@ -16,7 +16,7 @@
 #
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import util
-
+import project.handler
 
 class MainHandler(webapp.RequestHandler):
     def get(self):
@@ -24,7 +24,8 @@ class MainHandler(webapp.RequestHandler):
 
 
 def main():
-    application = webapp.WSGIApplication([('/', MainHandler)],
+    application = webapp.WSGIApplication([('/', MainHandler),
+    										('/create',project.handler.create)],
                                          debug=True)
     util.run_wsgi_app(application)
 
